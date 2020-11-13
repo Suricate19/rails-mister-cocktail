@@ -3,11 +3,35 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 import 'bootstrap';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { loadDynamicBannerText } from '../components/banner';
+import { initSweetalert } from '../plugins/init_sweetalert';
+
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  initUpdateNavbarOnScroll();
+});
+
+
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
+
+initSweetalert('#sweet-alert-demo', {
+  title: "Cocktail Add",
+  text: "This is a great!Your Cocktail is listed?",
+  icon: "success"
+});
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
